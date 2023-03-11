@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.ProgressPage"
+             Title="ProgressPage">
+    <VerticalStackLayout>
+        <Label 
+            x:Name="ProgLabel"
+            Text="Добро пожаловать"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            HeightRequest="50"/>
+
+        <ProgressBar x:Name="ProgBar" ProgressColor="Green" HeightRequest="40"/>
+
+        <HorizontalStackLayout>
+            <Button x:Name="Start" Text="Start" Clicked="StartM"/>
+            <Button x:Name="Stop" Text="Cancel" Clicked="CancelM"/>
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>

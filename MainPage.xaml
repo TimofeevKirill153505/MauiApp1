@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MainPage">
+
+    <Grid x:Name="grid" Padding="0" ColumnSpacing="0" RowSpacing="0" BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="LogButton" Text="ln x" Clicked="log" Grid.Row="0" Grid.Column="0" Style="{StaticResource UnarOperatorButtonStyle}" />
+        <VerticalStackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3">
+            <Label x:Name="InputedField" Text="" Style="{StaticResource InputedStyle}"/>
+            <Label x:Name="InputField" Text="0"  Style="{StaticResource InputStyle}"/>
+        </VerticalStackLayout>
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="MCButton" Text="MC" Clicked ="MemCl" Grid.Column="0" Style="{StaticResource MemoryButtonStyle}"/>
+            <Button x:Name="MRButton" Text="MR"  Clicked ="MemRead" Grid.Column="1" Style="{StaticResource MemoryButtonStyle}"/>
+            <Button x:Name="MPlusButton" Text="M+" Clicked ="MemAdd" Grid.Column="2" Style="{StaticResource MemoryButtonStyle}"/>
+            <Button x:Name="MMinusButton" Text="M-" Clicked="MemSub" Grid.Column="3" Style="{StaticResource MemoryButtonStyle}"/>
+            <Button x:Name="MSButton" Text="MS" Clicked="MemSave" Grid.Column="4" Style="{StaticResource MemoryButtonStyle}"/>
+            <Button x:Name="MListButton" Text="M>" Clicked="MemLst" Grid.Column="5" Style="{StaticResource MemoryButtonStyle}"/>
+            <BoxView x:Name="CoolBox" IsVisible="False" BackgroundColor="LightGray"  Grid.Column="0" Grid.ColumnSpan="5"/>
+            <Label x:Name="HiddenInfo" IsVisible="False" Grid.Column="0" Grid.ColumnSpan="5" Style="{StaticResource HiddenLabel}"/>
+        </Grid>
+
+        <Button x:Name="PercentButton" Text="%" Clicked="Percent" Grid.Row="2" Grid.Column="0" Style="{StaticResource DualOperatorButtonStyle}"/>
+        <Button x:Name="CEButton" Text="CE" Clicked="CEAct" Grid.Row="2" Grid.Column="1" Style="{StaticResource CommonButtonStyle}"/>
+        <Button x:Name="CButton" Text="C" Clicked="CAct" Grid.Row="2" Grid.Column="2" Style="{StaticResource CommonButtonStyle}"/>
+        <Button x:Name="DelButton" Text="&lt;&lt;" Clicked="OnDelButtonClicked"  Grid.Row="2" Grid.Column="3" Style="{StaticResource CommonButtonStyle}"/>
+
+        <Button x:Name="xDivButton" Text="1/x" Clicked="xDivAct" Grid.Row="3" Grid.Column="0" Style="{StaticResource UnarOperatorButtonStyle}"/>
+        <Button x:Name="SquareButton" Text="x^2" Clicked="SquareAct" Grid.Row="3" Grid.Column="1" Style="{StaticResource UnarOperatorButtonStyle}"/>
+        <Button x:Name="SquareRoot" Text="sqrt" Clicked="SqrtAct" Grid.Row="3" Grid.Column="2" Style="{StaticResource UnarOperatorButtonStyle}"/>
+
+        <Button x:Name="Div" Text="/" Clicked ="OnDualOperatorClicked" Grid.Row="3" Grid.Column="3" Style="{StaticResource DualOperatorButtonStyle}"/>
+        <Button x:Name="Mult" Text="X" Clicked ="OnDualOperatorClicked" Grid.Row="4" Grid.Column="3" Style="{StaticResource DualOperatorButtonStyle}"/>
+        <Button x:Name="Sub" Text="-" Clicked ="OnDualOperatorClicked" Grid.Row="5" Grid.Column="3" Style="{StaticResource DualOperatorButtonStyle}"/>
+        <Button x:Name="Add" Text="+"  Clicked ="OnDualOperatorClicked" Grid.Row="6" Grid.Column="3" Style="{StaticResource DualOperatorButtonStyle}"/>
+
+        <Button x:Name="Equal" Text="=" Clicked ="Count" Grid.Row="7" Grid.Column="3" Style="{StaticResource EqualButtonStyle}"/>
+
+        <Button x:Name="Point" Text="." Clicked="PointAct" Grid.Row="7" Grid.Column="2" Style="{StaticResource SpecButtonStyle}"/>
+        <Button x:Name="PlMin" Text="+/-" Clicked="Neg" Grid.Row="7" Grid.Column="0" Style="{StaticResource SpecButtonStyle}"/>
+
+
+        <Button x:Name="Button0" Text="0" Clicked="OnNumberClicked" Grid.Row="7" Grid.Column="1" Style="{StaticResource NumberButtonStyle}"/>
+
+        <Button x:Name="Button1" Text="1" Clicked="OnNumberClicked" Grid.Row="6" Grid.Column="0" Style="{StaticResource NumberButtonStyle}"/>
+        <Button x:Name="Button2" Text="2" Clicked="OnNumberClicked" Grid.Row="6" Grid.Column="1" Style="{StaticResource NumberButtonStyle}"/>
+        <Button x:Name="Button3" Text="3" Clicked="OnNumberClicked" Grid.Row="6" Grid.Column="2" Style="{StaticResource NumberButtonStyle}"/>
+
+        <Button x:Name="Button4" Text="4" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="0" Style="{StaticResource NumberButtonStyle}"/>
+        <Button x:Name="Button5" Text="5" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="1" Style="{StaticResource NumberButtonStyle}"/>
+        <Button x:Name="Button6" Text="6" Clicked="OnNumberClicked" Grid.Row="5" Grid.Column="2" Style="{StaticResource NumberButtonStyle}"/>
+
+        <Button x:Name="Button7" Text="7" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="0" Style="{StaticResource NumberButtonStyle}"/>
+        <Button x:Name="Button8" Text="8" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="1" Style="{StaticResource NumberButtonStyle}"/>
+        <Button x:Name="Button9" Text="9" Clicked="OnNumberClicked" Grid.Row="4" Grid.Column="2" Style="{StaticResource NumberButtonStyle}"/>
+
+    </Grid>
+
+</ContentPage>

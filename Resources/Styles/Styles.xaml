@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Style x:Key="CommonButtonStyle" TargetType="Button">
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="CornerRadius" Value="20"/>
+        <Setter Property="BackgroundColor" Value="Blue"/>
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="FontSize" Value="20"/>
+    </Style>
+
+    <Style x:Key="NumberButtonStyle" TargetType="Button" BasedOn="{StaticResource CommonButtonStyle}">
+        <Setter Property="BackgroundColor" Value="Grey"/>
+        <Setter Property="CornerRadius" Value="60"/>
+
+    </Style>
+
+    <Style x:Key="DualOperatorButtonStyle" TargetType="Button" BasedOn="{StaticResource CommonButtonStyle}">
+        <Setter Property="BackgroundColor" Value="DarkCyan"/>
+    </Style>
+
+    <Style x:Key="UnarOperatorButtonStyle" TargetType="Button" BasedOn="{StaticResource CommonButtonStyle}">
+        <Setter Property="BackgroundColor" Value="BlueViolet"/>
+    </Style>
+
+    <Style x:Key="EqualButtonStyle" TargetType="Button" BasedOn="{StaticResource CommonButtonStyle}">
+        <Setter Property="BackgroundColor" Value="Orange"/>
+    </Style>
+
+    <Style x:Key="MemoryButtonStyle" TargetType="Button" BasedOn="{StaticResource CommonButtonStyle}">
+        <Setter Property="Background" Value="Lavender"/>
+        <Setter Property="TextColor" Value="Black"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="FontSize" Value="15"/>
+    </Style>
+
+    <Style x:Key="SpecButtonStyle" TargetType="Button" BasedOn="{StaticResource CommonButtonStyle}">
+        <Setter Property="BackgroundColor" Value="DarkSeaGreen"/>
+    </Style>
+
+
+
+    <Style x:Key="InputStyle"  TargetType="Label">
+        <Setter Property="Padding" Value="9"/>
+        <Setter Property="HorizontalTextAlignment" Value="End"/>
+        <Setter Property="BackgroundColor" Value="White"/>
+        <Setter Property="TextColor" Value="Black"/>
+        <Setter Property="VerticalTextAlignment" Value="End"/>
+        <Setter Property="FontSize" Value="30"/>
+    </Style>
+
+    <Style x:Key="InputedStyle" TargetType="Label" BaseResourceKey="InputStyle">
+        <Setter Property="TextColor" Value="Grey"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Padding" Value="7"/>
+    </Style>
+
+    <Style x:Key="HiddenLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="TextColor" Value="Black"/>
+    </Style>
+
+    <Style x:Key="HiddenBox" TargetType="Rectangle">
+        <Setter Property="BackgroundColor" Value="LightGrey"/>
+        <Setter Property="RadiusX" Value="70"/>
+        <Setter Property="HeightRequest" Value="80"/>
+        <Setter Property="WidthRequest" Value="270"/>
+    </Style>
+</ResourceDictionary>
