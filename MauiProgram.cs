@@ -18,7 +18,7 @@ public static class MauiProgram
 #if DEBUG
 								builder.Logging.AddDebug();
 #endif
-
+								builder.Services.AddSingleton<IDBService, SQLService>();
 								return builder.Build();
 				}
 }

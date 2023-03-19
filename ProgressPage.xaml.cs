@@ -5,23 +5,25 @@ namespace MauiApp1;
 public partial class ProgressPage : ContentPage
 {
 
-				Task<double> tsk = null;
-				CancellationTokenSource cts= new CancellationTokenSource();
+				Task tsk = null;
+				CancellationTokenSource cts = null;
+				CancellationToken tok;
 				public ProgressPage()
 				{
 								InitializeComponent();
 				}
 
-				double Count()
+				void Count()
 				{
 								double res = 0;
 								double trash = 0;
-								double h = 0.00000001;
+								double h = 0.0001;
 								for (double x = 0; x <= 1; x += h)
 								{
-												if (cts.Token.IsCancellationRequested == true)
+												if (tok.IsCancellationRequested == true)
 												{
-																return 0;
+																MainThread.BeginInvokeOnMainThread(() => ProgLabel.Text = "Процесс отменен");
+																return;
 												}
 
 												res += Math.Sin(x) * h;
@@ -35,7 +37,7 @@ public partial class ProgressPage : ContentPage
 												MainThread.BeginInvokeOnMainThread(SetProgress(x, res));
 								}
 
-								return res;
+								MainThread.BeginInvokeOnMainThread(() => ProgLabel.Text = $"Полученный результат: {res}");
 				}
 
 				Action SetProgress(double proc, double res)
@@ -43,21 +45,25 @@ public partial class ProgressPage : ContentPage
 								return () =>
 								{
 												ProgBar.Progress = proc;
-												if (proc != 1) ProgLabel.Text = $"Процесс работает: {Math.Round(proc * 100, 2)}%";
+												if (proc < 1) ProgLabel.Text = $"Процесс работает: {Math.Round(proc * 100, 2)}%";
 												else ProgLabel.Text = $"Полученный результат: {res}";
 								};
 				}
 
 				void StartM(object sender, EventArgs e)
 				{
-								tsk = new Task<double>(Count, cts.Token);
+								cts = new CancellationTokenSource();
+								tok = cts.Token;
+								tsk = new Task(Count, tok);
 								tsk.Start();
 				}
 
-				void CancelM(object sender, EventArgs e)
+				async void CancelM(object sender, EventArgs e)
 				{
+								if (tsk == null) return;			
 								cts.Cancel();
-								ProgLabel.Text = "Процесс отменен";
+								await tsk;
+								tsk.Dispose();
 								tsk = null;
 				}
 }

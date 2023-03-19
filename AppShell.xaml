@@ -14,5 +14,6 @@
         Route="MainPage" />
 
     <ShellContent Title="Прогрессбар" ContentTemplate="{DataTemplate local:ProgressPage}" Route="ProgressPage"/>
+    <ShellContent Title="База данных" ContentTemplate="{DataTemplate local:DataBase}" Route="DataBase"/>
 
 </Shell>
